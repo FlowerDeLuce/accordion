@@ -56,20 +56,23 @@ function slideToggle(event) {
     });
     heightChecked = true;
   }
-  if (currentItem.className.indexOf('opened') === -1) {
-    arrSublist.forEach((sublist) => {
-      sublist.style.height = '0px';
-    });
-    listItems.forEach((item) => {
-      item.classList.remove("opened");
-    });
-    currentItem.classList.add("opened");
-    currSublist.style.height = initHeight + 'px';
+  if(currentItem.className.indexOf('sublist__item')=== -1){
+    if (currentItem.className.indexOf('opened') === -1) {
+      arrSublist.forEach((sublist) => {
+        sublist.style.height = '0px';
+      });
+      listItems.forEach((item) => {
+        item.classList.remove("opened");
+      });
+      currentItem.classList.add("opened");
+      currSublist.style.height = initHeight + 'px';
+    }
+    else {
+      currentItem.classList.remove("opened");
+      currSublist.style.height = 0 + 'px';
+    }
   }
-  else {
-    currentItem.classList.remove("opened");
-    currSublist.style.height = 0 + 'px';
-  }
+  
 }
 document.onreadystatechange = () => {
   if (document.readyState === 'complete') {
